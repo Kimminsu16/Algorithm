@@ -1,0 +1,23 @@
+// Longest Increasing Subesequence 알고리즘
+// 시간복잡도가 O(N²)인 경우
+// https://blog.naver.com/alstn3659/222654143011
+
+#include <stdio.h>
+
+int main()
+{
+	int A[8] = { 1, 4, 0, 3, 7, 2, 5, 10 };
+	int D[8] = {  };
+
+	for (int i = 0; i < 8; i++)
+	{
+		D[i] = 1;
+		for (int j = 0; j < i; j++)
+		{
+			if ((A[i] > A[j]) && (D[j] + 1 > D[i]))
+				D[j] = D[i]++;
+		}
+	}
+
+	for(int i = 0; i < 8; i++) printf("%d ", D[i]);
+}
